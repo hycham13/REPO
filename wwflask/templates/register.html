@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_field %}
+
+{% block title %}<title> register form </title>{% endblock %}
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1"> Register </span>
+    </nav>
+    <span class="border border-info">
+    <span class="border border-primary">
+        <div class="container">
+            <div class="col-sm-6">
+                <h2 class="text-primary"> register </h2>
+            </div>
+        </div>
+    </span>
+        {% block styles %}
+        <!-- Bootstrap CSS -->
+        {{ bootstrap.load_css() }}
+        {% endblock %}
+{% endblock %}
+
+{% block body %}
+{% block content %}
+<div class="container">
+     <div class="row">
+         <div class="col-sm-6">
+            <form method="POST" action="/register">
+                <ul>
+                     {{ form.csrf_token }}
+                     {{ render_field(form.name,size=20,placeholder = 'name') }}
+                     {{ render_field(form.email,size =30 ,placeholder = 'example@gmil.com') }}
+                     {{ render_field(form.message,size = 50 ,placeholder = 'Leave Commentair') }}
+                    <input type="submit" class="btn btn-primary"  value="Submit">
+                </ul>
+            </form>
+        </div>
+     </div>
+</div>
+{% endblock %}
+{% endblock %}
+</span>
